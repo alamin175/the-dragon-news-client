@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import {
   FaFacebook,
@@ -10,12 +10,32 @@ import {
 } from "react-icons/fa";
 import Qzone from "../QZone/Qzone";
 import bg from "../../assets/bg.png";
+import { AuthContext } from "../../Pages/Provider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+
 const RightNav = () => {
+  const provider = new GoogleAuthProvider();
+  const { signInGoogle } = useContext(AuthContext);
+  const handleLogin = () => {
+    signInGoogle(provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.result;
+        const currentUser = result.user;
+        // console.log(currentUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <div className="mb-4">
         <h3> Login With</h3>
-        <Button className="mt-2 mb-2" variant="outline-primary">
+        <Button
+          onClick={handleLogin}
+          className="mt-2 mb-2"
+          variant="outline-primary"
+        >
           <FaGoogle />
           Login with Google
         </Button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Image } from "react-bootstrap";
 import moment from "moment";
 import { CiBookmark } from "react-icons/ci";
@@ -7,8 +7,15 @@ import { Link } from "react-router-dom";
 import Rating from "react-rating";
 
 const NewsCategory = ({ category }) => {
+  const [bookmark, setbookmark] = useState([]);
   const { _id, title, total_view, author, details, rating, image_url } =
     category;
+
+  // const handlebookmark = (value) => {
+  //   const newbookmark = [...bookmark, value];
+  //   setbookmark(newbookmark);
+  //   console.log(newbookmark);
+  // };
   return (
     <div>
       <Card className="mb-4 ">
@@ -25,7 +32,9 @@ const NewsCategory = ({ category }) => {
               </span>
             </div>
             <div className="fs-3">
-              <CiBookmark></CiBookmark>
+              <button>
+                <CiBookmark></CiBookmark>
+              </button>
               <FaShareAlt />
             </div>
           </div>
