@@ -1,8 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import usetitle from "../../hooks/usetitle";
 
 const News = () => {
   const { title, author, details, image_url, rating } = useLoaderData();
+  usetitle("News");
   return (
     <div>
       <h1>Name: {author.name} </h1>

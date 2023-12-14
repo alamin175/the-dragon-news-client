@@ -5,9 +5,11 @@ import { CiBookmark } from "react-icons/ci";
 import { FaEye, FaRegStar, FaShareAlt, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Rating from "react-rating";
+import usetitle from "../../hooks/usetitle";
 
 const NewsCategory = ({ category }) => {
   const [bookmark, setbookmark] = useState([]);
+  usetitle("Category");
   const { _id, title, total_view, author, details, rating, image_url } =
     category;
 

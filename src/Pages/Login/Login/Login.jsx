@@ -7,11 +7,13 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import usetitle from "../../../hooks/usetitle";
 import NavigationBar from "../../../Share Pages/NavigationBar/NavigationBar";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  usetitle("Login");
 
   const location = useLocation();
   // console.log("login location", location);
